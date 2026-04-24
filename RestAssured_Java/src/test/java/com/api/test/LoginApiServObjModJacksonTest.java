@@ -2,20 +2,19 @@ package com.api.test;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import com.api.base.AuthService;
 import com.api.models.LoginRequest;
 import com.api.models.LoginResponse;
-
 import io.restassured.response.Response;
 
-public class LoginApiTest2 {
+public class LoginApiServObjModJacksonTest {
 
     @Test(description = "Verify Login API is working")
     public void loginTest() {
         AuthService authService = new AuthService();
         LoginRequest loginRequest = new LoginRequest("emilys","emilyspass",30);
-        Response response = authService.login("login", loginRequest); //we are using serailization here, so we are passing the object directly and jackson will convert it to json
+        //we are using serialization here, so we are passing the object directly and Jackson will convert it to json
+        Response response = authService.login("login", loginRequest); 
         System.out.println(response.asPrettyString());
         LoginResponse loginResponse = response.as(LoginResponse.class); //deserialization, we are converting the json response to java object
         System.out.println(loginResponse.getAccessToken());

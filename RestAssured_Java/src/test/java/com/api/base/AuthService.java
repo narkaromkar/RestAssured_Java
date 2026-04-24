@@ -1,7 +1,5 @@
 package com.api.base;
 
-import com.api.models.LoginRequest;
-
 import io.restassured.response.Response;
 
 public class AuthService extends BaseService {

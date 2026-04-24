@@ -1,0 +1,7 @@
+com\api\base\BaseService.class
+com\api\base\ProductsService.class
+com\api\test\LoginApiTestBasic.class
+com\api\models\LoginResponse.class
+com\api\base\AuthService.class
+com\api\models\LoginRequest.class
+com\api\test\LoginApiTest_Serv_Obj_Jackson.class

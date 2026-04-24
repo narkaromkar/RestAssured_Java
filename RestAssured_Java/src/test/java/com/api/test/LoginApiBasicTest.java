@@ -2,12 +2,13 @@ package com.api.test;
 
 
 import static io.restassured.RestAssured.*;
-import org.testng.Assert;
+import static org.testng.Assert.*;
+
 import org.testng.annotations.Test;
 
 import io.restassured.response.Response;
 
-public class LoginApiTest {
+public class LoginApiBasicTest {
 
     @Test(description = "Verify Login API is working")
     public void loginTest() {
@@ -24,6 +25,6 @@ public class LoginApiTest {
                 .post("/auth/login");
         System.out.println(response.asPrettyString());
 
-        Assert.assertEquals(200, response.getStatusCode());
+        assertEquals( response.getStatusCode(),200);
     }
 }

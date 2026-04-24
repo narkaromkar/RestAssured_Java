@@ -20,6 +20,12 @@ public class BaseService {
             .contentType(ContentType.JSON)
             .body(body)
             .post(endpoint);
-    } 
+    }
 
+    public Response fetch(String endpoint) {
+        return baseRequestSpec()
+                .get(endpoint);
+    }
 }
+
+
