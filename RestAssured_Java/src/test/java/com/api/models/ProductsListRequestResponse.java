@@ -1,12 +1,13 @@
 package com.api.models;
 
+import lombok.Builder;
 import lombok.Data;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true) //this will make sure if new property is added to response test case will still run
-public class ProductsListResponse {
+public class ProductsListRequestResponse {
 
     private List<Product> products;
     private int total; // Added these common DummyJSON fields

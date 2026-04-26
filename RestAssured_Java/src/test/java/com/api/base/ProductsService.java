@@ -9,4 +9,8 @@ public class ProductsService extends BaseService{
         return this.fetch(BASE_PATH+endpoint);
     }
 
+    public Response addProducts(String endpoint, Object body) {
+        return this.post(BASE_PATH+endpoint, body);
+    }
+
 }

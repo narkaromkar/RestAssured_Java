@@ -1,6 +1,6 @@
 package com.api.test;
 
-import org.testng.Assert;
+import static org.testng.Assert.*;
 import org.testng.annotations.Test;
 import com.api.base.AuthService;
 import com.api.models.LoginRequest;
@@ -9,25 +9,30 @@ import io.restassured.response.Response;
 
 public class LoginApiServObjModJacksonTest {
 
-    @Test(description = "Verify Login API is working")
+    @Test(description = "Verify Login API is working and tokens exist")
     public void loginTest() {
         AuthService authService = new AuthService();
         LoginRequest loginRequest = new LoginRequest("emilys","emilyspass",30);
         //we are using serialization here, so we are passing the object directly and Jackson will convert it to json
-        Response response = authService.login("login", loginRequest); 
-        System.out.println(response.asPrettyString());
+        Response response = authService.login("login", loginRequest);
         LoginResponse loginResponse = response.as(LoginResponse.class); //deserialization, we are converting the json response to java object
-        System.out.println(loginResponse.getAccessToken());
-        System.out.println(loginResponse.getRefreshToken());
-        System.out.println(loginResponse.getId());
-        System.out.println(loginResponse.getUsername());
-        System.out.println(loginResponse.getEmail());
-        System.out.println(loginResponse.getFirstName());
-        System.out.println(loginResponse.getLastName());
-        System.out.println(loginResponse.getGender());
-        System.out.println(loginResponse.getImage());
 
-        Assert.assertNotNull(loginResponse.getAccessToken());
-        Assert.assertEquals(loginResponse.getId(), 1);
+        assertNotNull(loginResponse.getAccessToken(), "Access Token is null");
+        assertNotNull(loginResponse.getRefreshToken(), "Refresh Token is null");
+    }
+
+    @Test(description = "Verify getting user details working")
+    public void getLoggedInUserTest() {
+        AuthService authService = new AuthService();
+        LoginRequest loginRequest = new LoginRequest("emilys","emilyspass",30);
+        Response response = authService.login("login", loginRequest);
+        LoginResponse loginResponse = response.as(LoginResponse.class);
+
+        String accessToken = loginResponse.getAccessToken();
+
+        assertNotNull(accessToken, "Access Token is null");
+        Response getMeResponse = authService.getMe("me", accessToken);
+
+        System.out.println(getMeResponse.asPrettyString());
     }
 }

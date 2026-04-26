@@ -9,4 +9,7 @@ public class AuthService extends BaseService {
         return this.post(BASE_PATH+endpoint, body);
     }
 
+    public Response getMe(String endpoint, String token) {
+        return this.fetch(BASE_PATH+endpoint, token);
+    }
 }

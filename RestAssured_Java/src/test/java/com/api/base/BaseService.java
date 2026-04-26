@@ -23,7 +23,15 @@ public class BaseService {
     }
 
     public Response fetch(String endpoint) {
+        System.out.println("URL"+BASE_URI+endpoint);
         return baseRequestSpec()
+                .get(endpoint);
+    }
+
+    public Response fetch(String endpoint, String token) {
+        System.out.println("URL"+BASE_URI+endpoint);
+        return baseRequestSpec()
+                .header("Authorization", "Bearer " + token)
                 .get(endpoint);
     }
 }
