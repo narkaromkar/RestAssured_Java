@@ -32,7 +32,5 @@ public class LoginApiServObjModJacksonTest {
 
         assertNotNull(accessToken, "Access Token is null");
         Response getMeResponse = authService.getMe("me", accessToken);
-
-        System.out.println(getMeResponse.asPrettyString());
     }
 }

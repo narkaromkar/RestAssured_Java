@@ -14,10 +14,8 @@ public class ProductsAPITest {
     public void getProductsTest() {
         ProductsService productsService = new ProductsService();
         Response response = productsService.getProducts("");
-        System.out.println(response.asPrettyString());
         assertNotNull(response.asPrettyString());
         assertTrue(response.getTime() < 2000, "Response time is greater than 2s which is ="+ response.getTime());
-        System.out.println("response time "+response.getTime());
     }
 
     @Test(description = "Verify Products JSON validation for id and price")
@@ -49,7 +47,6 @@ public class ProductsAPITest {
     public void getSingleResourceTest() {
         ProductsService productsService = new ProductsService();
         Response response = productsService.getProducts("1");
-        System.out.println("response"+response.asPrettyString());
 
         ProductsListRequestResponse.Product productResponse = response.as(ProductsListRequestResponse.Product.class);
         assertNotNull(response.path("category"), "Object is null");
@@ -93,13 +90,13 @@ public class ProductsAPITest {
 
         Double highestPrice = 0.0;
 
-        for(ProductsListRequestResponse.Product prd: pr){
-            if(prd.getPrice()>highestPrice) {
+        for(ProductsListRequestResponse.Product prd: pr) {
+            if (prd.getPrice() > highestPrice) {
                 highestPrice = prd.getPrice();
             }
+            assertTrue(highestPrice > 1000, "Product price is less than 1000");
+
         }
-        System.out.println(highestPrice);
-        assertTrue(highestPrice>1000, "Product price is less than 1000");
     }
 }
 

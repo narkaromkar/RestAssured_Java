@@ -4,6 +4,8 @@ import static io.restassured.RestAssured.*;
 
 import com.api.models.LoginRequest;
 
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.response.Response;
@@ -12,7 +14,10 @@ public class BaseService {
     private static final String BASE_URI = "https://dummyjson.com";
 
     public RequestSpecification baseRequestSpec() {
-        return given().baseUri(BASE_URI);
+        return given()
+                .baseUri(BASE_URI)
+                .filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
+
     }
     
     public Response post(String endpoint, Object body) {

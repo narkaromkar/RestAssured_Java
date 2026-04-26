@@ -23,7 +23,6 @@ public class LoginApiBasicTest {
                            }
                         """)
                 .post("/auth/login");
-        System.out.println(response.asPrettyString());
 
         assertEquals( response.getStatusCode(),200);
     }
