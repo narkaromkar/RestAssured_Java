@@ -1,0 +1,33 @@
+{
+  "status": "success",
+  "data": {
+    "products": [
+      {
+        "id": 1,
+        "name": "Product A",
+        "price": 29.99,
+        "currency": "USD",
+        "inStock": true
+      },
+      {
+        "id": 2,
+        "name": "Product B",
+        "price": 49.99,
+        "currency": "USD",
+        "inStock": true
+      },
+      {
+        "id": 3,
+        "name": "Product C",
+        "price": 99.99,
+        "currency": "USD",
+        "inStock": false
+      }
+    ],
+    "meta": {
+      "totalCount": 3,
+      "page": 1,
+      "pageSize": 10
+    }
+  }
+}

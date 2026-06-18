@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="RestAssured API Tests" verbose="2" parallel="false">
+    <test name="Login API Tests">
+        <classes>
+            <class name="com.practice.LoginApiBasicTest"/>
+            <class name="com.practice.api.test.LoginApiBasicUsingPOJOTest"/>
+            <class name="com.practice.api.test.LoginApiServObjModJacksonTest"/>
+        </classes>
+    </test>
+
+    <test name="Products API Tests">
+        <classes>
+            <class name="com.practice.api.test.ProductsAPITest"/>
+        </classes>
+    </test>
+
+    <test name="Demo Tests">
+        <classes>
+            <class name="com.practice.DemoTest"/>
+        </classes>
+    </test>
+</suite>

@@ -1,19 +1,17 @@
-package com.practice;
+package com.practice.api.test;
 
 
-import static io.restassured.RestAssured.*;
-import static org.testng.Assert.*;
-
-import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import org.testng.annotations.Test;
-
 import io.restassured.response.Response;
+import org.testng.annotations.Test;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoginApiBasicTest {
+import static io.restassured.RestAssured.given;
+import static org.testng.Assert.assertEquals;
+
+public class LoginApiBasicUsingJSONFileTest {
 
     @Test(description = "Verify Login API is working")
     public void loginTest() {

@@ -1,4 +1,4 @@
-package com.practice;
+package com.practice.api.test;
 
 import io.restassured.RestAssured;
 
