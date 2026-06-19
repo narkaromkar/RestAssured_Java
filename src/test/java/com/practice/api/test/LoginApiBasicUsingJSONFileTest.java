@@ -5,6 +5,7 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,22 +16,13 @@ public class LoginApiBasicUsingJSONFileTest {
 
     @Test(description = "Verify Login API is working")
     public void loginTest() {
-        Map<String, String> payload = new HashMap<String, String>();
-        payload.put("username", "iamfd");
-        payload.put("password", "password");
+        File payload = new File("src/test/resources/test-data/login-request.json");
 
 
         Response response =
                 given()
                         .baseUri("http://64.227.160.186:9000/v1")
                         .contentType(ContentType.JSON)     //using enum instead hardcoded .header("Content-Type", "application/json")
-//                       .body("""
-//                                  {
-//                                    "username": "iamfd",
-//                                    "password": "password"
-//                                  }
-//                                  """)
-                        //using map with serialization instead above hardcoded payload
                         .body(payload)
                         .accept(ContentType.JSON)   // only accept JSON response
                         .log().all()
